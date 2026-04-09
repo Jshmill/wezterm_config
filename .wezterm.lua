@@ -4,14 +4,16 @@ local act = wezterm.action
 return {
 	-- Window appearance
 	window_decorations = "RESIZE", -- hides the title bar buttons
-	window_background_opacity = 0.70, -- semi-transparent background
+	window_background_opacity = 0.75, -- semi-transparent background
 	macos_window_background_blur = 40, -- frosted glass effect
 	hide_tab_bar_if_only_one_tab = true, -- hides tab bar when not needed
 	tab_bar_at_bottom = true, -- moves the tab bar to the bottom of the window
 	-- Font and theme
 	font = wezterm.font("Fira Code"),
 	font_size = 14.0,
-	color_scheme = "Catppuccin Mocha",
+	-- color_scheme = "Catppuccin Mocha",
+	-- color_scheme = "Rebecca (base16)",
+	color_scheme = "Rosé Pine Moon (base16)",
 
 	-- Initial window size and position
 	initial_cols = 170,
