@@ -11,6 +11,9 @@ $line_break\
 $character"""
 
 [directory]
+style = "blue bold"
+truncation_length = 3
+truncation_symbol = "…/"
 read_only = " "
 
 [battery]
@@ -40,3 +43,7 @@ style = "bright-black"
 [cmd_duration]
 format = "[$duration]($style) "
 style = "yellow"
+
+[conda]
+style = "green bold"
+format = "[$symbol$environment]($style) "
