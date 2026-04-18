@@ -1,10 +1,22 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+wezterm.on("window-focus-changed", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+
+	if window:is_focused() then
+		overrides.window_background_opacity = 0.85
+	else
+		overrides.window_background_opacity = 0.7
+	end
+
+	window:set_config_overrides(overrides)
+end)
+
 return {
+	automatically_reload_config = true,
 	-- Window appearance
 	window_decorations = "RESIZE", -- hides the title bar buttons
-	window_background_opacity = 0.80, -- semi-transparent background
 	macos_window_background_blur = 30, -- frosted glass effect
 	hide_tab_bar_if_only_one_tab = true, -- hides tab bar when not needed
 	tab_bar_at_bottom = true, -- moves the tab bar to the bottom of the window
@@ -14,6 +26,7 @@ return {
 	-- color_scheme = "Catppuccin Mocha",
 	-- color_scheme = "Rebecca (base16)",
 	color_scheme = "Rosé Pine Moon (base16)",
+	-- color_scheme = "Gruvbox Dark (base16)",
 	--
 	-- NOTE: LIGHTMODE
 	-- color_scheme = "Github",
@@ -40,6 +53,12 @@ return {
 		{ key = "K", mods = "CMD|SHIFT", action = act.AdjustPaneSize({ "Up", 5 }) },
 		{ key = "J", mods = "CMD|SHIFT", action = act.AdjustPaneSize({ "Down", 5 }) },
 		{ key = "w", mods = "CMD", action = act.CloseCurrentPane({ confirm = false }) },
+		-- Clear terminal
+		{
+			key = "k",
+			mods = "CMD",
+			action = wezterm.action.ClearScrollback("ScrollbackAndViewport"),
+		},
 	},
 
 	colors = {
